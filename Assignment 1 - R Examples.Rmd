@@ -1,0 +1,35 @@
+---
+title: "Assignment 1 - R Examples"
+author: "Murat Gocer"
+date: "9 Ekim 2018"
+output: html_document
+---
+
+## Assignment: Find Three R Examples About My Work
+
+As a six yeared civil engineer, I worked for the greatest projects of Turkey such as İzmir - İstanbul Motorway, 3rd Bosphorus Bridge and now I've been working as a lecturer and coordinator of Construction Technology programme for 3 years. While big data, artificial intelligence and coding are rarely used in construction industry I have a great wonder about these technologies. The industry works with lots of great industries such as energy, transportation, water resources, buildings etc... While all these industries use technologies, construction should not be left behind. My aim is developing programmes that never used in the industry and I would like to introduce construction to artificial intellegence.
+
+## RStudio Cenference
+
+The RStudio Conference by Ansgar Wenzel named “A Closer Look at UK MOT Results or Why Does My Car Always Fail?” mainly posits that all motor vehicles of more than a certain age have to pass each year in order to prove that they are safe to drive on the UK roads. They collect the data about age, milage, model, fuel type, postcode region of cars and are of failure on vehicles. In the future they will concentrate on feature engineering, better predictions such as different statistical models. And they will try to use all data and datasets for other regions. [click](https://www.youtube.com/watch?v=yqxIoUJtM2A)
+
+## Example 1: R and Other Open Source Tools for Civil Engineering
+
+The advantages of the script-based software solutions is their flexibility: learning
+a command-line interface such as R provides the potential for taking existing code and
+modifying it to your own needs, a common requirement in enginneering applications
+of all types. Batch-processing and reproducibility are additional advantages that
+allow one’s solutions to scale.
+
+In summary, open source software such as R are little-used in Civil Engineering
+but have huge potential for growth. Insights from the related realm of GIS
+suggest that this may change and that the current crop of products could be
+the beginning of a ‘phase shift’ in software for Civil Engineering. [click](https://www.r-bloggers.com/r-and-other-open-source-tools-for-civil-engineering/)
+
+## Example 2: Application of Data Mining Techniques in The Estimation of The Uniaxial Compressive Strength of Jet Grouting Columns Over Time
+
+Jet grouting (JG) is one of the most popular ground improvement techniques. However, most JG works are planned from empirical rules that are often too conservative, frequently resulting in less-than-optimal technical and economic efficiencies. The author proposes several models to predict the UCS of JG laboratory formulations over time. [click](http://repositorium.sdum.uminho.pt/bitstream/1822/11485/1/Application%2520of%2520data%2520mining%2520techniques%2520in%2520the%2520estimation%2520of%2520the%2520uniaxial.pdf)
+
+## Example 3: Scope of R Software in Civil Engineering
+
+The wide usage of the R software and its various packages in areas of mapping and spatial analysis. R is distinctly superior to most other softwares used in these fields as it provides a very flexible platform for the development of the packages and also offers a wide range of functions and high end graphics, also, R being an open-source software, it is constantly being developed and upgraded by the online community around the world and is available free of cost. A new integration model based in a geographic database is studied. The access is executed through TerraLib with TerraLib components being used directly as R objects. This way we can access the database in a easy manner and execute geoprocessing functions while reading data from the database. [click](http://www.academia.edu/10244711/Scope_of_R_Software_in_Civil_Engineering)
