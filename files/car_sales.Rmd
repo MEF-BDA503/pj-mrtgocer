@@ -1,0 +1,106 @@
+---
+title: "ODD Analysis_2"
+author: "Murat Gocer"
+date: "25 Kasım 2018"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Step by step
+
+First I created a sub-analysis and a 2016 March part of the whole data set. After finishing the this process whole data,between 2016-2018, merged and I did some analysis on the whole data.
+
+## Starting
+I used readRDS command to start my analysis by reading the merged data which is in my local drive
+
+```
+# My local path
+explanatory <- readRDS("home/murat/Masaüstü/pj18-mrtgocer/files/car_data_aggregate.rds")
+```
+
+
+## My analysis
+I started with top 5 largest import car selling brands as of last year end.
+
+```
+##Top Import Car 5 Sellers in last year end##
+top_sellers <- cars %>%
+  filter(auto_total > 0 & brand_name != "TOPLAM:" & year == 2017 & month == 12) %>%
+  select(brand_name, auto_imp) %>%
+  mutate(market_share = percent(auto_imp / sum(auto_imp))) %>%
+  arrange(desc(auto_imp)) %>%
+  top_n(n = 5, wt = auto_imp)
+## Let's see if it worked
+head(top_sellers)
+```
+```
+## # A tibble: 6 x 3
+##   brand_name auto_imp market_share
+##   <chr>         <dbl> <chr>       
+## 1 VOLKSWAGEN    13003 19.1%       
+## 2 DACIA          6685 9.8%        
+## 3 NISSAN         5225 7.7%        
+## 4 RENAULT        4820 7.1%        
+## 5 OPEL           4594 6.7%        
+## 6 PEUGEOT        4594 6.7%
+```
+
+## Car sales
+I continued my analysis by shaping main data in a way that we can use easier.
+
+```
+##I filtered the companies whose sells are more than 0##
+top_auto <- cars %>%
+  filter(auto_total > 0 & brand_name != "TOPLAM:") %>%
+  select(brand_name, auto_dom, auto_imp, auto_total, month, year) %>%
+## The data has a monthly frequency
+  mutate(day = 01, imp_ratio = round(auto_imp/auto_total,2)) %>%
+  arrange(desc(year, month))
+## I checked if it is working
+head(top_auto)
+```
+```
+## # A tibble: 6 x 8
+##   brand_name   auto_dom auto_imp auto_total month  year   day imp_ratio
+##   <chr>           <dbl>    <dbl>      <dbl> <dbl> <dbl> <dbl>     <dbl>
+## 1 ALFA ROMEO          0       13         13     9  2018     1         1
+## 2 ASTON MARTIN        0        2          2     9  2018     1         1
+## 3 AUDI                0      350        350     9  2018     1         1
+## 4 BMW                 0      158        158     9  2018     1         1
+## 5 CITROEN             0      134        134     9  2018     1         1
+## 6 DACIA               0     1141       1141     9  2018     1         1
+```
+## Joining
+
+Now I joined the tables.
+
+```
+mydata <- inner_join(top_sellers, top_auto, by =c("brand_name"))
+## Checking
+head(mydata)
+```
+
+```
+## # A tibble: 6 x 10
+##   brand_name auto_imp.x market_share auto_dom auto_imp.y auto_total month
+##   <chr>           <dbl> <chr>           <dbl>      <dbl>      <dbl> <dbl>
+## 1 VOLKSWAGEN      13003 19.1%               0       1763       1763     9
+## 2 VOLKSWAGEN      13003 19.1%               0       2567       2567     8
+## 3 VOLKSWAGEN      13003 19.1%               0       4217       4217     7
+## 4 VOLKSWAGEN      13003 19.1%               0       4428       4428     6
+## 5 VOLKSWAGEN      13003 19.1%               0       5913       5913     5
+## 6 VOLKSWAGEN      13003 19.1%               0       5801       5801     4
+## # ... with 3 more variables: year <dbl>, day <dbl>, imp_ratio <dbl>
+```
+## Final
+I used lubridate library for histroical information in the analysis.
+
+```
+plot <- mydata %>% rowwise() %>%
+  mutate(date = lubridate::as_date(paste(year, as.integer(month), as.integer(day), sep = "-")))
+```
+
+

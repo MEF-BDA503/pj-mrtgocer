@@ -48,7 +48,7 @@ print(car_data_march_16,width=Inf)
 One of the best methods is to save your data to an `RDS` or `RData` file. The difference is RDS can hold only one object but RData can hold many. Since we have only one data frame here we will go with RDS.
 
 ```{r,eval=FALSE}
-saveRDS(car_data_march_16,file="~/YOUR_OWN_PATH/odd_car_sales_data_march_16.rds")
+saveRDS(car_data_march_16,file="~\\Masaüstü\\pj18-mrtgocer\\files\\odd_car_sales_data_march_16.rds")
 # You can read that file by readRDS and assigning to an object 
 # e.g 
 # rds_data <- readRDS("~/YOUR_OWN_PATH/odd_car_sales_data_march_16.rds")
